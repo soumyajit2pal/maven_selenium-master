@@ -75,6 +75,9 @@ public class GoogleExampleIT extends DriverBase {
         WebDriverWait wait=new WebDriverWait(driver, 120);
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//*[contains(text(),'Email')]"))));
     //    send email id and then click to continue
+
+        System.out.println(driver.findElement(By.xpath(".//*[contains(text(),'Sign-In')]]")).getText() +" Page is loaded");
+
         driver.findElement(By.xpath(".//*[@type='email']")).sendkeys("soumyajit2pal@gmail.com");
         driver.findElement(By.xpath(".//span[.='Continue']")).click();
 
@@ -83,5 +86,7 @@ public class GoogleExampleIT extends DriverBase {
         driver.findElement(By.xpath(".//*[@type='password']")).sendkeys("Bhaddru@2020");
         driver.findElement(By.xpath(".//span[.='Sign-In']")).click();
 
+
+
     }
-}
+} 
