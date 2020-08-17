@@ -5,8 +5,6 @@ import com.lazerycode.selenium.page_objects.GoogleHomePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.Test;
-
 public class GoogleExampleIT extends DriverBase {
 
     private ExpectedCondition<Boolean> pageTitleStartsWith(final String searchString) {
@@ -69,5 +67,21 @@ public class GoogleExampleIT extends DriverBase {
 
         // Should see: "cheese! - Google Search"
         System.out.println("Page title is: " + driver.getTitle());
+        WebElement mouserhover = driver.findElement(By.xpath(".//span[.='Hello, Sign in']"));
+        actions.moveToElement(mouserhover).perform();
+// click to Sign In button
+        driver.findElement(By.xpath(".//span[.='Sign in']")).click();
+// wait untill login window not visible
+        WebDriverWait wait=new WebDriverWait(driver, 120);
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//*[contains(text(),'Email')]"))));
+    //    send email id and then click to continue
+        driver.findElement(By.xpath(".//*[@type='email']")).sendkeys("soumyajit2pal@gmail.com");
+        driver.findElement(By.xpath(".//span[.='Continue']")).click();
+
+        WebDriverWait wait=new WebDriverWait(driver, 120);
+
+        driver.findElement(By.xpath(".//*[@type='password']")).sendkeys("Bhaddru@2020");
+        driver.findElement(By.xpath(".//span[.='Sign-In']")).click();
+
     }
 }
