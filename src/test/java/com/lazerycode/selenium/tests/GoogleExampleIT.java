@@ -48,7 +48,7 @@ public class GoogleExampleIT extends DriverBase {
         WebDriver driver = getDriver();
 
         // And now use this to visit Google
-        driver.get("https://www.amazon.com/");
+        driver.get("https://www.amazon.in/");
         // Alternatively the same thing can be done like this
         // driver.navigate().to("http://www.google.com");
 
@@ -76,7 +76,7 @@ public class GoogleExampleIT extends DriverBase {
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//*[contains(text(),'Email')]"))));
     //    send email id and then click to continue
 
-        System.out.println(driver.findElement(By.xpath(".//*[contains(text(),'Sign-In')]]")).getText() +" Page is loaded");
+        System.out.println(driver.findElement(By.xpath(".//*[contains(text(),'Login')]]")).getText() +" Page is loaded");
 
         driver.findElement(By.xpath(".//*[@type='email']")).sendkeys("soumyajit2pal@gmail.com");
         driver.findElement(By.xpath(".//span[.='Continue']")).click();
@@ -84,8 +84,14 @@ public class GoogleExampleIT extends DriverBase {
         WebDriverWait wait=new WebDriverWait(driver, 120);
 
         driver.findElement(By.xpath(".//*[@type='password']")).sendkeys("Bhaddru@2020");
-        driver.findElement(By.xpath(".//span[.='Sign-In']")).click();
+        driver.findElement(By.xpath(".//span[.='Login']")).click();
 
+        System.out.println(driver.findElement(By.xpath("//span[@id='nav-your-amazon-text']")).getText() +" is visbile");
+
+        driver.findElement(By.xpath("//*[@id='twotabsearchtextbox' and @type='text']")).sendkeys("JBL C100SI In-Ear Deep Bass Headphones with Mic (Black)");
+        driver.findElement(By.xpath("//*[@type='submit' and @value='Go']")).click();
+        
+        
 
 
     }
