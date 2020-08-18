@@ -5,6 +5,8 @@ import com.lazerycode.selenium.page_objects.GoogleHomePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 public class GoogleExampleIT extends DriverBase {
 
     private ExpectedCondition<Boolean> pageTitleStartsWith(final String searchString) {
@@ -67,32 +69,28 @@ public class GoogleExampleIT extends DriverBase {
 
         // Should see: "cheese! - Google Search"
         System.out.println("Page title is: " + driver.getTitle());
-        WebElement mouserhover = driver.findElement(By.xpath(".//span[.='Hello, Sign in']"));
-        actions.moveToElement(mouserhover).perform();
+        // WebElement mouserhover = driver.findElement(By.xpath(".//span[.='Hello, Sign in']"));
+        // actions.moveToElement(mouserhover).perform();
 // click to Sign In button
         driver.findElement(By.xpath(".//span[.='Sign in']")).click();
 // wait untill login window not visible
-        WebDriverWait wait=new WebDriverWait(driver, 120);
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//*[contains(text(),'Email')]"))));
+        // WebDriverWait wait=new WebDriverWait(driver, 120);
+        // wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//*[contains(text(),'Email')]"))));
     //    send email id and then click to continue
 
         System.out.println(driver.findElement(By.xpath(".//*[contains(text(),'Login')]]")).getText() +" Page is loaded");
 
-        driver.findElement(By.xpath(".//*[@type='email']")).sendkeys("soumyajit2pal@gmail.com");
+        driver.findElement(By.xpath(".//*[@type='email']")).sendKeys("soumyajit2pal@gmail.com");
         driver.findElement(By.xpath(".//span[.='Continue']")).click();
 
         WebDriverWait wait=new WebDriverWait(driver, 120);
 
-        driver.findElement(By.xpath(".//*[@type='password']")).sendkeys("Bhaddru@2020");
+        driver.findElement(By.xpath(".//*[@type='password']")).sendKeys("Bhaddru@2020");
         driver.findElement(By.xpath(".//span[.='Login']")).click();
 
         System.out.println(driver.findElement(By.xpath("//span[@id='nav-your-amazon-text']")).getText() +" is visbile");
 
-        driver.findElement(By.xpath("//*[@id='twotabsearchtextbox' and @type='text']")).sendkeys("JBL C100SI In-Ear Deep Bass Headphones with Mic (Black)");
+        driver.findElement(By.xpath("//*[@id='twotabsearchtextbox' and @type='text']")).sendKeys("JBL C100SI In-Ear Deep Bass Headphones with Mic (Black)");
         driver.findElement(By.xpath("//*[@type='submit' and @value='Go']")).click();
-        
-        
-
-
     }
 } 
